@@ -1,0 +1,9 @@
+PING 4.2.2.2 (4.2.2.2): 56 data bytes
+64 bytes from 4.2.2.2: icmp_seq=0 ttl=59 time=56.527 ms
+64 bytes from 4.2.2.2: icmp_seq=1 ttl=59 time=29.310 ms
+64 bytes from 4.2.2.2: icmp_seq=2 ttl=59 time=82.862 ms
+64 bytes from 4.2.2.2: icmp_seq=3 ttl=59 time=117.269 ms
+
+--- 4.2.2.2 ping statistics ---
+4 packets transmitted, 4 packets received, 0.0% packet loss
+round-trip min/avg/max/stddev = 29.310/71.492/117.269/32.512 ms

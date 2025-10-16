@@ -1,12 +1,26 @@
-import os 
+# This module 
 
-# pings to the corresponding ip address but sends output to null interface
-temp = os.system("ping -c 4 4.2.2.2 > null")
+import os
+from ping3 import ping
+import csv, time
 
-# if it succeeds temp should return 0, therefore server is reachable
-if temp == 0:
-	print("server reachable")
-else:
-	print("server not reachable")
+# the target being pinged
+host = "8.8.8.8"
+
+# csv file for results
+output_file = "ping_log.csv"
+
+samples = 5
+interval = 1 #time in between pings
 
 
+with open(output_file, "w", newline="") as f:
+	writer = csv.writer(f)
+	writer.writerow(["timestamp", "latency_ms"])
+	for i in range(samples):
+		t = time.time()
+		rtt = ping(host, unit="ms")
+		writer.writerow([f"{t:.2f}",f"{rtt:.2f}" if rtt is not None else "lost"])
+		print(i, rtt)
+		f.flush() # to not lose data 
+		time.sleep(interval) 
