@@ -1,4 +1,4 @@
-# This module 
+# This module generates traffic by pinging a server
 
 import os
 from ping3 import ping
