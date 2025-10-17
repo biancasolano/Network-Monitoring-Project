@@ -17,7 +17,7 @@ Instructions:
    - "python3 analyze_ping.py"
    - you can also see the log file from ping.py under ping_log.csv
 6. for further inspection you can run:
-   - tshark -r capture.pcap -Y "tcp.analysi.retransmission" -T fields -e frame.number | wc -l
+   - tshark -r capture.pcap -Y "tcp.analysis.retransmission" -T fields -e frame.number | wc -l
    - this command tells you the number of retransmissions (transport layer problems).
 
 Next steps:
