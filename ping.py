@@ -5,7 +5,7 @@ from ping3 import ping
 import csv, time
 
 # the target being pinged, for simulating a problem change to localhost 
-host = "8.8.8.8"
+host = "localhost"
 
 # csv file for results
 output_file = "ping_log.csv"
