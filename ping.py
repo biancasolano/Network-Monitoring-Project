@@ -5,10 +5,10 @@ from ping3 import ping
 import csv, time
 
 # the target being pinged, for simulating a problem change to localhost 
-host = "8.8.8.8" # cs server IP
+host = "localhost" # cs server IP
 
 # csv file for results
-output_file = "ping_log_google.csv"
+output_file = "ping_log_localhost.csv"
 
 samples = 5
 interval = 1 #time in between pings

@@ -5,7 +5,7 @@ from collections import Counter
 from datetime import datetime
 
 # opens the capture file from running tcpdump
-cap = pyshark.FileCapture("capture_google.pcap")
+cap = pyshark.FileCapture("capture_localhost.pcap")
 protocol_counts = Counter()
 requests = {}
 rtts = []
