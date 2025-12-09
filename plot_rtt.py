@@ -1,5 +1,27 @@
 #!/usr/bin/env python3
 
+"""
+plot_rtt.py
+-----------
+This script loads RTT (round-trip time) measurements from one or more CSV files
+and generates a variety of visualizations including:
+
+    • Line plots       – RTT evolution over time
+    • Scatter plots    – RTT variance at each sample
+    • Histograms       – RTT distribution
+    • VPN comparisons  – Baseline RTT vs VPN RTT overlay
+    • Multi-file plots – Compare many RTT sources at once
+
+This tool is used as the final stage of our network monitoring pipeline:
+    (1) traffic_generator.py creates RTT logs,
+    (2) tcpdump records the raw packets,
+    (3) analyze_ping.py extracts timing from the capture, and
+    (4) plot_rtt.py visualizes everything for analysis.
+
+The script accepts paths to one baseline CSV and optional additional CSVs
+(for VPN trials or multi-condition comparisons).
+"""
+
 import os
 import sys
 import pandas as pd

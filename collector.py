@@ -1,7 +1,34 @@
+"""
+collector.py
+--------------
+This script measures the average RTT (round-trip time) to a large batch
+of websites under a given network condition (e.g., baseline, VPN1, VPN2).
+It automates large-scale latency collection and stores results in a clean
+CSV format for later analysis.
+
+This script is typically used together with:
+    • vpn_on / vpn_off tests
+    • plotting scripts for multi-host RTT comparison
+    • multi-condition RTT analysis (baseline vs VPN)
+"""
+
 import subprocess
 import csv
 import time
 
+# -----------------------------------------------------------
+# LIST OF WEBSITES TO TEST
+# -----------------------------------------------------------
+# Contains a mix of:
+#   • Major tech companies
+#   • Media sites
+#   • Universities
+#   • Government domains
+#   • International and global sites
+#
+# This provides diversity in geography, routing paths, CDN locations,
+# and DNS behavior — important when comparing VPN conditions.
+# -----------------------------------------------------------
 websites = [
     # --- Original batch ---
     "google.com", "cloudflare.com", "amazon.com", "apple.com", "microsoft.com",
@@ -34,11 +61,24 @@ websites = [
     "valorant.com"
 ]
 
-output_csv = "combined_rtt_clean.csv"
-condition = "VPN1(france)"   # Change to "vpn" when using VPN
+# -----------------------------------------------------------
+# OUTPUT CSV CONFIGURATION
+# -----------------------------------------------------------
+output_csv = "csv_files/combined_rtt_clean.csv"
 
+# Label used to differentiate test conditions.
+# Examples:
+#   "baseline"        – no VPN
+#   "VPN1(france)"    – connected to France endpoint
+#   "VPN2(newyork)"   – connected to U.S. East endpoint
+condition = "VPN1(france)"
+
+# -----------------------------------------------------------
+# MAIN RTT COLLECTION LOOP
+# -----------------------------------------------------------
 with open(output_csv, "a", newline="") as f:
     writer = csv.writer(f)
+    # Write header for readability
     writer.writerow(["website", "rtt", "condition"])
 
     for site in websites:

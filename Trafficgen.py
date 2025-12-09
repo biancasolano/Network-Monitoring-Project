@@ -144,7 +144,7 @@ class PcapCapture:
         self.proc = None
 
     def start(self):
-        if not shutil.which("tcpdump")
+        if not shutil.which("tcpdump"):
             print("Warning: tcpdump not found", file=sys.stderr)
             return
         cmd = ["tcpdump", "-i", self.iface, "-s", "0", "-U", "-w", self.out_path, self.filter]

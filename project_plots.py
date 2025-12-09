@@ -4,6 +4,19 @@ import matplotlib.pyplot as plt
 # ============================================
 # Data
 # ============================================
+# These values were collected using ping3 + tcpdump and represent
+# baseline round-trip times (RTTs) under normal, non-VPN conditions.
+#
+# For each host we log:
+#   • latency values (RTT in milliseconds)
+#   • raw UNIX timestamps from the moment of measurement
+#   • converted datetime objects for human-readable plotting
+#
+# Plotting these over time helps us visualize:
+#   • stability of each network path
+#   • routing effects (LAN vs campus vs public Internet)
+#   • natural jitter and variation
+# ============================================================
 
 ## CS Server results
 latency_cs = [154.81, 77.72, 66.18, 76.29, 69.67]

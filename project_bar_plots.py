@@ -3,6 +3,19 @@ import matplotlib.pyplot as plt
 # ======================================
 # Data
 # ======================================
+# These dictionaries represent protocol distributions extracted
+# from PyShark after analyzing packet captures from three sources:
+#
+#   • Localhost       – loopback interface traffic
+#   • Google          – external Internet host
+#   • CS server       – campus network host
+#
+# Keys represent detected protocol types.
+# Values represent packet counts for each protocol type.
+#
+# The avg_rtt_* variables store the average ICMP RTT for each host
+# based on earlier capture/analysis (from analyze_ping.py).
+# =========================================================
 
 # Localhost
 protocols_local = {'TCP': 4, 'UDP': 1, 'Unknown': 10}
@@ -40,7 +53,7 @@ def plot_protocol_distribution(data, title, avg_rtt, filename):
 # Generate each plot
 # ======================================
 
-plot_protocol_distribution(protocols_local, "Localhost", avg_rtt_local, "localhost_protocols.png")
-plot_protocol_distribution(protocols_google, "Google", avg_rtt_google, "google_protocols.png")
-plot_protocol_distribution(protocols_cs, "CS Server", avg_rtt_cs, "cs_server_protocols.png")
+plot_protocol_distribution(protocols_local, "Localhost", avg_rtt_local, "graphs/localhost_protocols.png")
+plot_protocol_distribution(protocols_google, "Google", avg_rtt_google, "graphs/google_protocols.png")
+plot_protocol_distribution(protocols_cs, "CS Server", avg_rtt_cs, "graphs/cs_server_protocols.png")
 
