@@ -59,12 +59,58 @@ project_bar_plots.py & project_plots.py:
       `python3 <filename>`
 
 `trace.py` & `collector.py` & `plot_rtt.py`:
-1. Run `python collector.py`
-2. Run `python trace.py`
-3. Run `plot_rtt.py`
+1. Run `python3 collector.py`
+2. Run `python3 trace.py`
+3. Run `python3 plot_rtt.py <ping_csv> [<vpn_ping_csv>|<extra_csv>...]`
 
 `Trafficgen.py`: 
-1. Run `python Trafficgen.py`
+- Modes: {icmp,http,dns,tcp,udp}
+1. Run `python3 Trafficgen.py [-h] --mode {icmp,http,dns,udp} [--target TARGET] [--port PORT] [--samples SAMPLES] [--interval INTERVAL]
+                     [--timeout TIMEOUT] [--output OUTPUT] [--allow-external] [--udp-payload-size UDP_PAYLOAD_SIZE]
+                     [--udp-await-reply] [--dns-name DNS_NAME] [--pcap-out PCAP_OUT] [--iface IFACE]
+                     [--capture-filter CAPTURE_FILTER]`
+2. examples:
+   - ICMP test: `python3 Trafficgen.py \
+  --mode icmp \
+  --target 8.8.8.8 \
+  --allow-external \
+  --samples 20 \
+  --interval 0.5 \
+  --timeout 1500 \
+  --output csv_files/icmp_log.csv \
+  --pcap-out icmp_capture.pcap
+  --capture-filter "icmp"`
+   - DNS test: `python3 Trafficgen.py \
+  --mode dns \
+  --target 8.8.8.8 \
+  --dns-name example.com \
+  --allow-external \
+  --samples 20 \
+  --interval 0.5 \
+  --timeout 2000 \
+  --output csv_files/dns_log.csv \
+  --pcap-out dns_capture.pcap \
+  --capture-filter "udp port 53 or tcp port 53"`
+   - HTTP test: `python3 Trafficgen.py \
+  --mode http \
+  --target google.com \
+  --allow-external \
+  --samples 20 \
+  --interval 0.5 \
+  --timeout 2000 \
+  --output csv_files/http_log.csv \
+  --pcap-out http_capture.pcap \
+  --capture-filter "tcp port 80 or tcp port 443"`
+   - UDP test: `python3 Trafficgen.py \
+  --mode udp \
+  --target 8.8.8.8 \
+  --allow-external \
+  --samples 20 \
+  --interval 0.5 \
+  --timeout 2000 \
+  --output csv_files/udp_log.csv \
+  --pcap-out udp_capture.pcap \
+  --capture-filter "host 8.8.8.8 and udp"`
 
 # Other
 - In our project structure we have two directories:

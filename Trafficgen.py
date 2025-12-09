@@ -183,7 +183,7 @@ def main():
     p.add_argument("--samples", type=int, default=10)
     p.add_argument("--interval", type=float, default=1)
     p.add_argument("--timeout", type=int, default=1000)
-    p.add_argument("--output", default="traffic_log.csv")
+    p.add_argument("--output", default="csv_files/traffic_log.csv")
     p.add_argument("--allow-external", action="store_true")
     p.add_argument("--udp-payload-size", type=int, default=128)
     p.add_argument("--udp-await-reply", action="store_true")

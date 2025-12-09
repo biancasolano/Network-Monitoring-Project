@@ -1,0 +1,11 @@
+timestamp,seq,mode,status,latency_ms_or_info
+1765318360.287,0,dns,error,"Command '['nslookup', 'google.com', '127.0.0.1']' timed out after 1 seconds"
+1765318362.300,1,dns,error,"Command '['nslookup', 'google.com', '127.0.0.1']' timed out after 1 seconds"
+1765318364.312,2,dns,error,"Command '['nslookup', 'google.com', '127.0.0.1']' timed out after 1 seconds"
+1765318366.323,3,dns,error,"Command '['nslookup', 'google.com', '127.0.0.1']' timed out after 1 seconds"
+1765318368.333,4,dns,error,"Command '['nslookup', 'google.com', '127.0.0.1']' timed out after 1 seconds"
+1765318370.347,5,dns,error,"Command '['nslookup', 'google.com', '127.0.0.1']' timed out after 1 seconds"
+1765318372.359,6,dns,error,"Command '['nslookup', 'google.com', '127.0.0.1']' timed out after 1 seconds"
+1765318374.372,7,dns,error,"Command '['nslookup', 'google.com', '127.0.0.1']' timed out after 1 seconds"
+1765318376.385,8,dns,error,"Command '['nslookup', 'google.com', '127.0.0.1']' timed out after 1 seconds"
+1765318378.397,9,dns,error,"Command '['nslookup', 'google.com', '127.0.0.1']' timed out after 1 seconds"

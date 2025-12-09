@@ -14,7 +14,7 @@ import matplotlib.pyplot as plt
 import os
 
 # Load CSV
-df = pd.read_csv("csv_files/combined_rtt_clean1.csv")
+df = pd.read_csv("csv_files/combined_rtt_clean.csv")
 df["rtt"] = pd.to_numeric(df["rtt"], errors="coerce")
 
 baseline = df[df["condition"].str.lower() == "baseline"]
@@ -99,9 +99,9 @@ plt.title("Baseline vs VPN1 vs VPN2 RTT Comparison (Dotted = Missing Segment Int
 plt.grid(alpha=0.3)
 plt.legend()
 
-os.makedirs("plots", exist_ok=True)
+os.makedirs("graphs", exist_ok=True)
 plt.tight_layout()
-plt.savefig("plots/rtt_multiline_dotted_correct.png", dpi=300)
+plt.savefig("graphs/rtt_multiline_dotted_correct.png", dpi=300)
 
-print("SAVED → plots/rtt_multiline_dotted_correct.png")
+print("SAVED → graphs/rtt_multiline_dotted_correct.png")
 
