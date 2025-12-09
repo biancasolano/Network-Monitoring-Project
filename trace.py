@@ -27,7 +27,6 @@ vpn1_rtts = get_rtts(vpn1)
 vpn2_rtts = get_rtts(vpn2)
 vpn3_rtts= get_rtts(vpn3)
 
-# ---- FUNCTION THAT DOES EXACTLY WHAT YOU WANT ---- #
 def plot_with_gap_dotted(x, y, label, color):
     # Plot real (solid)
     plt.plot(x, y, color=color, marker="o", linestyle="-", linewidth=2, label=label)
