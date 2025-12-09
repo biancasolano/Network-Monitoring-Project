@@ -1,21 +1,11 @@
-"""
-trace.py
---------------------
-This script loads RTT measurements for Baseline and multiple VPN conditions,
-computes the average RTT per website, and generates a comparison plot. Missing
-RTT values (common with unstable VPN routes) are shown using dotted lines to
-indicate gaps without hiding the overall trend. The final figure helps compare
-how different VPN endpoints affect latency across many websites.
-"""
-
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import os
-
+import math
 
 # Load CSV
-df = pd.read_csv("csv_files/combined_rtt_clean1.csv")
+df = pd.read_csv("/Users/ok/Documents/combined_rtt_clean1.csv")
 df["rtt"] = pd.to_numeric(df["rtt"], errors="coerce")
 
 baseline = df[df["condition"].str.lower() == "baseline"]
@@ -26,12 +16,6 @@ vpn3= df[df["condition"].str.contains("vpn3", case=False, na=False)]
 websites = sorted(df["website"].unique())
 x = np.arange(len(websites))
 
-# ================================================================
-# HELPER: Extract average RTT per website for a given VPN group
-# ---------------------------------------------------------------
-# For each website, compute the mean RTT under that condition.
-# Missing values remain NaN, allowing us to interpolate visually.
-# ================================================================
 def get_rtts(group):
     return np.array([
         group[group["website"] == site]["rtt"].mean()
@@ -43,17 +27,6 @@ vpn1_rtts = get_rtts(vpn1)
 vpn2_rtts = get_rtts(vpn2)
 vpn3_rtts= get_rtts(vpn3)
 
-# ================================================================
-# CUSTOM PLOTTING FUNCTION
-# ---------------------------------------------------------------
-# plot_with_gap_dotted:
-#   • Plots actual RTT values as a solid line.
-#   • Detects missing segments (NaN gaps).
-#   • Draws dotted lines interpolating across gaps so the trend is
-#     still visible while acknowledging missing measurements.
-#
-# This makes VPN comparisons clearer and avoids misleading drops.
-# ================================================================
 def plot_with_gap_dotted(x, y, label, color):
     # Plot real (solid)
     plt.plot(x, y, color=color, marker="o", linestyle="-", linewidth=2, label=label)
