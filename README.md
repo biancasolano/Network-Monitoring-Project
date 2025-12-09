@@ -64,7 +64,7 @@ project_bar_plots.py & project_plots.py:
 3. Run `python3 plot_rtt.py <ping_csv> [<vpn_ping_csv>|<extra_csv>...]`
 
 `Trafficgen.py`: 
-- Modes: {icmp,http,dns,tcp,udp}
+- Modes: {icmp,http,dns,udp}
 1. Run `python3 Trafficgen.py [-h] --mode {icmp,http,dns,udp} [--target TARGET] [--port PORT] [--samples SAMPLES] [--interval INTERVAL]
                      [--timeout TIMEOUT] [--output OUTPUT] [--allow-external] [--udp-payload-size UDP_PAYLOAD_SIZE]
                      [--udp-await-reply] [--dns-name DNS_NAME] [--pcap-out PCAP_OUT] [--iface IFACE]
