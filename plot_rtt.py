@@ -5,9 +5,8 @@ import sys
 import pandas as pd
 import matplotlib.pyplot as plt
 
-# ---------------------------------------------------------
+
 # Helper: load a ping CSV safely
-# ---------------------------------------------------------
 def load_ping_csv(path):
     if not os.path.exists(path):
         print(f"[WARN] File not found: {path}")
@@ -28,7 +27,7 @@ def load_ping_csv(path):
             if rtt_column:
                 break
 
-        # If we still didn't find anything, fall back to the first numeric column
+        # If  still didn't find anything, fall back to the first numeric column
         if rtt_column is None:
             numeric_cols = [c for c in df.columns if pd.api.types.is_numeric_dtype(df[c])]
             rtt_column = numeric_cols[0] if numeric_cols else None
@@ -44,9 +43,8 @@ def load_ping_csv(path):
         return None
 
 
-# ---------------------------------------------------------
 # Plot: Time series line plot
-# ---------------------------------------------------------
+
 def plot_line(rtt_series, title, outfile):
     plt.figure(figsize=(10, 4))
     plt.plot(rtt_series.index, rtt_series.values)
@@ -58,9 +56,8 @@ def plot_line(rtt_series, title, outfile):
     plt.close()
 
 
-# ---------------------------------------------------------
+
 # Plot: Scatter plot
-# ---------------------------------------------------------
 def plot_scatter(rtt_series, title, outfile):
     plt.figure(figsize=(10, 4))
     plt.scatter(rtt_series.index, rtt_series.values)
@@ -72,9 +69,8 @@ def plot_scatter(rtt_series, title, outfile):
     plt.close()
 
 
-# ---------------------------------------------------------
 # Plot: Histogram
-# ---------------------------------------------------------
+
 def plot_histogram(rtt_series, title, outfile):
     plt.figure(figsize=(10, 4))
     plt.hist(rtt_series.values, bins=30)
@@ -86,9 +82,9 @@ def plot_histogram(rtt_series, title, outfile):
     plt.close()
 
 
-# ---------------------------------------------------------
+
 # Plot: VPN vs Normal RTT Overlay Comparison
-# ---------------------------------------------------------
+
 def plot_comparison(normal_rtt, vpn_rtt, normal_label, vpn_label, outfile):
     plt.figure(figsize=(10, 4))
     plt.plot(normal_rtt.index, normal_rtt.values, label=normal_label)
@@ -102,9 +98,8 @@ def plot_comparison(normal_rtt, vpn_rtt, normal_label, vpn_label, outfile):
     plt.close()
 
 
-# ---------------------------------------------------------
 # Main
-# ---------------------------------------------------------
+
 def plot_multi(series_map, title, outfile):
     if not series_map or len(series_map) < 2:
         return
